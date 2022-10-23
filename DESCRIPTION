@@ -1,11 +1,11 @@
 Package: wrapR
-Title: What the Package Does (One Line, Title Case)
+Title: Some wrapper functions for common tasks
 Version: 0.0.0.9000
 Authors@R: c(
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre")),
+    person("Richard", "Martin", , "Richard.Martin@gov.bc.ca", role = c("aut", "cre")),
     person("Province of British Columbia", role = "cph")
   )
-Description: What the package does (one paragraph).
+Description: Some functions I use all the time.
 License: Apache License (== 2.0) | file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -14,3 +14,20 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: 
+    stringr,
+    dplyr,
+    janitor,
+    magrittr,
+    tibble,
+    cansim,
+    bcmaps,
+    sf,
+    htmltools,
+    leaflet,
+    scales,
+    ggplot2,
+    assertthat,
+    ggrepel,
+    utils,
+    forcats
