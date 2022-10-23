@@ -1,0 +1,33 @@
+Package: wrapR
+Title: Some wrapper functions for common tasks
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Richard", "Martin", , "Richard.Martin@gov.bc.ca", role = c("aut", "cre")),
+    person("Province of British Columbia", role = "cph")
+  )
+Description: Some functions I use all the time.
+License: Apache License (== 2.0) | file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Imports: 
+    stringr,
+    dplyr,
+    janitor,
+    magrittr,
+    tibble,
+    cansim,
+    bcmaps,
+    sf,
+    htmltools,
+    leaflet,
+    scales,
+    ggplot2,
+    assertthat,
+    ggrepel,
+    utils,
+    forcats
