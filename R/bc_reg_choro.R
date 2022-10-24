@@ -43,7 +43,7 @@ bc_reg_choro<- function(tbbl, region, thingy, value) {
           )
   ) %>%
     setView(lng = -125, lat = 55, zoom = 5) %>%
-    addProviderTiles("Esri.NatGeoWorldMap") %>%
+    addProviderTiles("MapTilesAPI.OSMEnglish") %>%
  #   addProviderTiles("CartoDB.PositronOnlyLabels") %>%
     addPolygons(
       fillColor = ~ pal(value),
