@@ -13,7 +13,7 @@
 #' @import scales
 #' @export
 
-bc_reg_choro<- function(tbbl, region, thingy, value) {
+bc_reg_choro<-function(tbbl, region, thingy, value) {
   tbbl <- tbbl%>%
     rename(region =  {{  region  }},
            thingy = {{  thingy  }},
@@ -36,15 +36,13 @@ bc_reg_choro<- function(tbbl, region, thingy, value) {
     str_to_title(str_replace_all(variable_plotted,"_"," ")), ": ", scales::percent(tbbl$value, accuracy = .1), "<br/>",
     sep="") %>%
     lapply(htmltools::HTML)
-  # browser()
   leaflet(tbbl,
           options = leafletOptions(
             attributionControl = FALSE
           )
   ) %>%
     setView(lng = -125, lat = 55, zoom = 5) %>%
-    addProviderTiles("MapTilesAPI.OSMEnglish") %>%
- #   addProviderTiles("CartoDB.PositronOnlyLabels") %>%
+    addProviderTiles("Esri.NatGeoWorldMap") %>%
     addPolygons(
       fillColor = ~ pal(value),
       color = "black",
