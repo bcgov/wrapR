@@ -12,7 +12,6 @@
 #' @import htmltools
 #' @import scales
 #' @export
-
 bc_reg_choro<-function(tbbl, region, thingy, value) {
   tbbl <- tbbl%>%
     rename(region =  {{  region  }},
@@ -49,11 +48,13 @@ bc_reg_choro<-function(tbbl, region, thingy, value) {
       label=mytext,
       fillOpacity = .5,
       weight = 1
-    ) %>%
+    )%>%
     addLegend("topright",
               pal = pal_rev,
-              values = ~value,
-              labFormat = labelFormat(transform = function(x) sort(x, decreasing = TRUE)),
+              values = ~ value,
+              labFormat = labelFormat(
+                suffix="%",
+                transform = function(x) 100*sort(x, decreasing = TRUE)),
               title = str_to_title(str_replace_all(variable_plotted,"_"," "))
     )
 }
