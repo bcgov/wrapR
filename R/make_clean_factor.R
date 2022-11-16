@@ -10,5 +10,6 @@ make_clean_factor <- function(strng) {
     trimws() %>%
     stringr::str_to_lower() %>%
     stringr::str_replace_all(" ", "_") %>%
+    stringr::str_replace_all("-", "_") %>%
     factor()
 }
