@@ -4,7 +4,7 @@
 \alias{bc_reg_choro}
 \title{Make a choropleth map of BC economic regions}
 \usage{
-bc_reg_choro(tbbl, region, thingy, value)
+bc_reg_choro(tbbl, region, thingy, value, num_format)
 }
 \arguments{
 \item{tbbl}{a tibble that contains (at least) the following 3 columns:}
@@ -14,6 +14,8 @@ bc_reg_choro(tbbl, region, thingy, value)
 \item{thingy}{the column of the tbbl that contains the name of what is being plotted.}
 
 \item{value}{the column of the tbble that contains the value of what is being plotted.}
+
+\item{num_format}{whether the number being plotted should be formatted as a comma or percent}
 }
 \description{
 Make a choropleth map of BC economic regions

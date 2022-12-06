@@ -3,6 +3,7 @@
 #' @param region the column of the tbbl that contains the economic regions: these MUST be camel_case i.e. mainland_south_west, vancouver_island_coast, north_coast_&_nechako, cariboo, kootenay, north_east, thompson_okanagan
 #' @param thingy the column of the tbbl that contains the name of what is being plotted.
 #' @param value the column of the tbble that contains the value of what is being plotted.
+#' @param num_format whether the number being plotted should be formatted as a comma or percent
 #' @rdname bc_reg_choro
 #' @import dplyr
 #' @import leaflet
@@ -12,7 +13,7 @@
 #' @import htmltools
 #' @import scales
 #' @export
-bc_reg_choro<-function(tbbl, region, thingy, value) {
+bc_reg_choro<-function(tbbl, region, thingy, value, num_format) {
   tbbl <- tbbl%>%
     rename(region =  {{  region  }},
            thingy = {{  thingy  }},
@@ -30,9 +31,16 @@ bc_reg_choro<-function(tbbl, region, thingy, value) {
   pal <- colorNumeric("viridis", domain = tbbl$value)
   pal_rev <- colorNumeric("viridis", domain = tbbl$value, reverse = TRUE)
 
+  if(num_format=="percent"){
+    form_val <- scales::percent(tbbl$value, accuracy = .1)
+  }else if(num_format=="comma"){
+    form_val <- scales::comma(tbbl$value, accuracy = 100)
+  }else{
+    stop("num_format needs to be either percent or comma")
+  }
   mytext <- paste(
     "Region: ", str_to_title(str_replace_all(tbbl$region,"_"," ")),"<br/>",
-    str_to_title(str_replace_all(variable_plotted,"_"," ")), ": ", scales::percent(tbbl$value, accuracy = .1), "<br/>",
+    str_to_title(str_replace_all(variable_plotted,"_"," ")), ": ", form_val, "<br/>",
     sep="") %>%
     lapply(htmltools::HTML)
   leaflet(tbbl,
