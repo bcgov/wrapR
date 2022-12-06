@@ -66,7 +66,7 @@ bc_reg_choro<-function(tbbl, region, thingy, value, num_format) {
                   suffix="%",
                   transform = function(x) 100*sort(x, decreasing = TRUE)),
                 title = str_to_title(str_replace_all(variable_plotted,"_"," ")))
-  }else if(num_format=="percent"){
+  }else if(num_format=="comma"){
     plt%>%
       addLegend("topright",
                 pal = pal_rev,
