@@ -43,7 +43,7 @@ bc_reg_choro<-function(tbbl, region, thingy, value, num_format) {
     str_to_title(str_replace_all(variable_plotted,"_"," ")), ": ", form_val, "<br/>",
     sep="") %>%
     lapply(htmltools::HTML)
-  leaflet(tbbl,
+  plt <- leaflet(tbbl,
           options = leafletOptions(
             attributionControl = FALSE
           )
@@ -56,13 +56,23 @@ bc_reg_choro<-function(tbbl, region, thingy, value, num_format) {
       label=mytext,
       fillOpacity = .5,
       weight = 1
-    )%>%
-    addLegend("topright",
-              pal = pal_rev,
-              values = ~ value,
-              labFormat = labelFormat(
-                suffix="%",
-                transform = function(x) 100*sort(x, decreasing = TRUE)),
-              title = str_to_title(str_replace_all(variable_plotted,"_"," "))
     )
+  if(num_format=="percent"){
+    plt%>%
+      addLegend("topright",
+                pal = pal_rev,
+                values = ~ value,
+                labFormat = labelFormat(
+                  suffix="%",
+                  transform = function(x) 100*sort(x, decreasing = TRUE)),
+                title = str_to_title(str_replace_all(variable_plotted,"_"," ")))
+  }else if(num_format=="percent"){
+    plt%>%
+      addLegend("topright",
+                pal = pal_rev,
+                values = ~ value,
+                title = str_to_title(str_replace_all(variable_plotted,"_"," ")))
+  }else{
+    stop("num_format needs to be either percent or comma")
+  }
 }
