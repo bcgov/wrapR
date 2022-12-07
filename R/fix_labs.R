@@ -10,11 +10,11 @@
 #' @importFrom stringr str_to_title str_replace_all
 fix_labs <- function(gg){
   gg <- gg+
-    ggplot2::labs(title=stringr::str_to_title(stringr::str_replace_all(gg$labels$title, "_", " ")),
-                  x=stringr::str_to_title(stringr::str_replace_all(gg$labels$x, "_", " ")),
-                  y=stringr::str_to_title(stringr::str_replace_all(gg$labels$y, "_", " ")),
-                  colour=stringr::str_to_title(stringr::str_replace_all(gg$labels$colour, "_", " ")),
-                  fill=stringr::str_to_title(stringr::str_replace_all(gg$labels$fill, "_", " ")),
-                  edge_colour=stringr::str_to_title(stringr::str_replace_all(gg$labels$edge_colour, "_", " ")))
+    ggplot2::labs(title=stringr::str_to_title(stringr::str_replace_all(as.character(gg$labels$title), "_", " ")),
+                  x=stringr::str_to_title(stringr::str_replace_all(as.character(gg$labels$x), "_", " ")),
+                  y=stringr::str_to_title(stringr::str_replace_all(as.character(gg$labels$y), "_", " ")),
+                  colour=stringr::str_to_title(stringr::str_replace_all(as.character(gg$labels$colour), "_", " ")),
+                  fill=stringr::str_to_title(stringr::str_replace_all(as.character(gg$labels$fill), "_", " ")),
+                  edge_colour=stringr::str_to_title(stringr::str_replace_all(as.character(gg$labels$edge_colour), "_", " ")))
   return(gg)
 }
