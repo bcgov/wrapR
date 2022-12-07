@@ -69,7 +69,7 @@ bc_reg_choro<-function(tbbl, region, thingy, value, num_format) {
   }else if(num_format=="comma"){
     plt%>%
       addLegend("topright",
-                #pal = pal_rev,
+                pal = pal,
                 values = ~ value,
                 title = str_to_title(str_replace_all(variable_plotted,"_"," ")))
   }else{
