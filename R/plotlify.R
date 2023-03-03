@@ -24,7 +24,7 @@ plotlify <- function(a_ggplot, caption, font_size, pal="Dark2"){
       theme_minimal(base_size = font_size)
   }
 
-  plotly::ggplotly(plt)%>%
+  myplot <- plotly::ggplotly(plt)%>%
     plotly::layout(font=list(
       family = "Franklin Gothic"),
       margin = list(b=120,t=70, l=100),
@@ -39,4 +39,11 @@ plotlify <- function(a_ggplot, caption, font_size, pal="Dark2"){
         height = 720
       )
     )
+
+  for (i in 1:length(myplot$x$data)){
+    if (!is.null(myplot$x$data[[i]]$name)){
+      myplot$x$data[[i]]$name =  gsub("\\(","",str_split(myplot$x$data[[i]]$name,",")[[1]][1])
+    }
+  }
+myplot
 }
