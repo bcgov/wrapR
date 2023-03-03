@@ -3,6 +3,7 @@
 #' @param a_ggplot a ggplot object
 #' @param caption The caption
 #' @param font_size the base font size
+#' @param pal the colour palette
 #' @return a plotly object
 #' @rdname plotlify
 #' @export
@@ -10,9 +11,19 @@
 #' @importFrom plotly layout
 #' @importFrom plotly config
 
-plotlify <- function(a_ggplot, caption, font_size){
-  plt <- a_ggplot+
-    theme_minimal(base_size = font_size)
+plotlify <- function(a_ggplot, caption, font_size, pal="Dark2"){
+  if (pal == "Viridis") {
+    plt <- a_ggplot+
+      scale_colour_viridis_d() +
+      scale_fill_viridis_d()+
+      theme_minimal(base_size = font_size)
+  } else {
+    plt <- a_ggplot+
+      scale_colour_brewer(palette = pal) +
+      scale_fill_brewer(palette = pal)+
+      theme_minimal(base_size = font_size)
+  }
+
   plotly::ggplotly(plt)%>%
     plotly::layout(font=list(
       family = "Franklin Gothic"),
