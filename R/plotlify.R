@@ -12,6 +12,10 @@
 #' @importFrom plotly config
 
 plotlify <- function(a_ggplot, caption, font_size, pal="Dark2"){
+
+  a_ggplot[["labels"]][["fill"]] <-  paste0(a_ggplot[["labels"]][["fill"]],"   ")
+  a_ggplot[["labels"]][["color"]] <-  paste0(a_ggplot[["labels"]][["color"]],"   ")
+
   if (pal == "Viridis") {
     plt <- a_ggplot+
       scale_colour_viridis_d() +
