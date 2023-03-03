@@ -27,7 +27,7 @@ plotlify <- function(a_ggplot, caption, font_size, pal="Dark2"){
   myplot <- plotly::ggplotly(plt)%>%
     plotly::layout(font=list(
       family = "Franklin Gothic"),
-      margin = list(b=120,t=70, l=100),
+      margin = list(b=120, t=80, l=100, r=100),
       annotations = list(x = 1, y = -0.4, text = paste("<i>", caption, "</i>"),
                          showarrow = F, xref='paper', yref='paper',
                          xanchor='right', yanchor='auto', xshift=-100, yshift=100, font=list(size=10))
