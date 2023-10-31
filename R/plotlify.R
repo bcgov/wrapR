@@ -29,7 +29,7 @@ plotlify <- function(a_ggplot, caption, font_size, pal="Dark2"){
       theme_minimal(base_size = font_size)
   }
 
-  myplot <- plotly::ggplotly(plt)%>%
+  myplot <- plotly::ggplotly(plt, tooltip = "text")%>%
     plotly::layout(font=list(
       family = "Franklin Gothic"),
       margin = list(b=120, l=100, r=100, t=80),
